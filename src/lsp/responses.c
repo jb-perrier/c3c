@@ -115,9 +115,9 @@ const char *lsp_hover(JSONObject *req)
 	json_resp_begin(req);
 	json_begin();
 
-	json_member("contents");
 	if (decl && decl->decl_kind == DECL_IMPORT)
 	{
+		json_member("contents");
 		scratch_buffer_printf("[{\"language\":\"C3\", \"value\": \"import %s;\"}, \"Import module `%s` into `%s`.\"]", decl->import.module->name->module, decl->import.module->name->module, unit->module->name->module);
 		json_coma();
 		json_member("range");
@@ -129,10 +129,10 @@ const char *lsp_hover(JSONObject *req)
 		lsp_position(decl->import.path->span.row - 1, decl->import.path->span.col + decl->import.path->span.length - 1);
 		json_end();
 	}
-	else
+	else if (decl && decl->decl_kind == DECL_FUNC)
 	{
-		json_string("That's the hover text from C3 Language Server !");
 	}
+
 
 	json_end();
 	free_arena();

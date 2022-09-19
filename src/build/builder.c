@@ -82,6 +82,7 @@ bool command_is_projectless(CompilerCommand command)
 		case COMMAND_BENCH:
 		case COMMAND_UNIT_TEST:
 		case COMMAND_PRINT_SYNTAX:
+		case COMMAND_LSP:
 			return false;
 	}
 	UNREACHABLE
@@ -248,6 +249,10 @@ static void update_build_target_from_options(BuildTarget *target, BuildOptions *
 		target->emit_asm = false;
 		target->emit_object_files = false;
 	}
+	if (options->lsp_mode)
+	{
+		target->release_arenas = false;
+	}
 	for (int i = 0; i < options->lib_dir_count; i++)
 	{
 		vec_add(target->libdirs, options->lib_dir[i]);
@@ -273,6 +278,7 @@ void init_default_build_target(BuildTarget *target, BuildOptions *options)
 		.reloc_model = RELOC_DEFAULT,
 		.feature.x86_vector_capability = X86VECTOR_DEFAULT,
 		.win.crt_linking = WIN_CRT_DEFAULT,
+		.release_arenas = true,
 	};
 	update_build_target_from_options(target, options);
 }

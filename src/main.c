@@ -4,6 +4,7 @@
 #include "build/project_creation.h"
 #include "compiler_tests/tests.h"
 #include "utils/lib.h"
+#include "lsp/lsp.h"
 
 bool debug_log = false;
 bool debug_stats = false;
@@ -75,6 +76,9 @@ int main_real(int argc, const char *argv[])
 		case COMMAND_DOCS:
 		case COMMAND_BENCH:
 			compile_file_list(&build_options);
+			break;
+		case COMMAND_LSP:
+			lsp_start(&build_options);
 			break;
 		case COMMAND_MISSING:
 			UNREACHABLE

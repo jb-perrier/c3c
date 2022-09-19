@@ -254,7 +254,15 @@ add_executable(c3c
         src/compiler/tilde_codegen_type.c
         src/compiler/windows_support.c
         src/compiler/codegen_asm.c
-        src/compiler/asm_target.c)
+        src/compiler/asm_target.c
+        src/lsp/lsp.h
+        src/lsp/lsp.c
+        src/lsp/debug.c
+        src/lsp/errors.c
+        src/lsp/parse.c
+        src/lsp/responses.c
+        src/lsp/uri.c
+        src/lsp/utils.c)
 
 
 target_include_directories(c3c PRIVATE

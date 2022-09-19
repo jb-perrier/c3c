@@ -89,6 +89,7 @@ const char *kw_values;
 void symtab_destroy()
 {
 	free(symtab.bucket);
+	symtab.bucket = NULL;
 }
 
 

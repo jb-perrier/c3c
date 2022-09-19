@@ -37,6 +37,7 @@ typedef enum
 	COMMAND_BENCH,
 	COMMAND_UNIT_TEST,
 	COMMAND_PRINT_SYNTAX,
+	COMMAND_LSP
 } CompilerCommand;
 
 typedef enum
@@ -255,6 +256,7 @@ typedef struct BuildOptions_
 	bool emit_asm;
 	bool emit_bitcode;
 	bool test_mode;
+	bool lsp_mode;
 	bool no_stdlib;
 	bool force_linker;
 	const char *panicfn;
@@ -328,6 +330,7 @@ typedef struct
 	bool lex_only;
 	bool parse_only;
 	bool check_only;
+	bool release_arenas;
 	bool emit_llvm;
 	bool emit_asm;
 	bool no_stdlib;

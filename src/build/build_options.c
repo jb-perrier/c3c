@@ -229,6 +229,11 @@ static void parse_command(BuildOptions *options)
 		options->command = COMMAND_UNIT_TEST;
 		return;
 	}
+	if (arg_match("lsp"))
+	{
+		options->command = COMMAND_LSP;
+		return;
+	}
 	if (arg_match("compile"))
 	{
 		options->command = COMMAND_COMPILE;
@@ -662,6 +667,11 @@ static void parse_option(BuildOptions *options)
 			if (match_longopt("test"))
 			{
 				options->test_mode = true;
+				return;
+			}
+			if (match_longopt("lsp"))
+			{
+				options->lsp_mode = true;
 				return;
 			}
 			if (match_longopt("path"))

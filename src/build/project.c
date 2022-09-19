@@ -232,6 +232,7 @@ static void project_add_targets(Project *project, JSONObject *project_data)
 			.feature.x86_vector_capability = X86VECTOR_DEFAULT,
 			.feature.safe_mode = true,
 			.win.crt_linking = WIN_CRT_DEFAULT,
+			.release_arenas = true,
 	};
 	load_into_build_target(project_data, "default target", &default_target);
 	JSONObject *targets_json = json_obj_get(project_data, "targets");

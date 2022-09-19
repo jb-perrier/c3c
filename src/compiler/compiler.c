@@ -268,7 +268,7 @@ void compiler_compile(void)
 
 	if (active_target.check_only)
 	{
-		free_arenas();
+		if (active_target.release_arenas) free_arenas();
 		return;
 	}
 
